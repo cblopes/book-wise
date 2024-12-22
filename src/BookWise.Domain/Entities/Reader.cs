@@ -2,6 +2,8 @@
 
 public class Reader : Entity
 {
+    private readonly List<Loan> _loans;
+
     public Reader(
         string firstName,
         string lastName,
@@ -12,6 +14,7 @@ public class Reader : Entity
         BirthDate = birthDate.Date;
         LoanAmount = 0;
         IsSuspended = false;
+        _loans = [];
     }
 
     public string FirstName { get; private set; }
@@ -19,4 +22,6 @@ public class Reader : Entity
     public DateTime BirthDate { get; private set; }
     public int LoanAmount { get; private set; }
     public bool IsSuspended { get; private set; }
+
+    public IReadOnlyCollection<Loan> Loans => [.. _loans];
 }
