@@ -23,5 +23,11 @@ public class Book : Entity
     public ECategory Category { get; private set; }
     public bool IsAvailable { get; private set; }
 
-    public IReadOnlyCollection<Loan> Loans => [.. _loans];
+    public IReadOnlyCollection<Loan> Loans => _loans.AsReadOnly();
+
+    public void MarkAsAvailable()
+        => IsAvailable = true;
+
+    public void MarkAsUnavailable()
+        => IsAvailable = false;
 }
